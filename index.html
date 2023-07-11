@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cachorro</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #fdfcdc;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #cachorro {
+        box-shadow: 0 0 20px 10px #00000055;
+        border-radius: 10px;
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="" id="cachorro" />
+  </body>
+  <script>
+    async function pegaDado() {
+      const resposta = await fetch(
+        "https://api.thedogapi.com/v1/images/search"
+      );
+      const cachorro = await resposta.json();
+      document.getElementById("cachorro").src = cachorro[0].url;
+    }
+    pegaDado();
+  </script>
+</html>
